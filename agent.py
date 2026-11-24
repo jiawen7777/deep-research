@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from langchain.agents.middleware import TodoListMiddleware
+from langchain.chat_models import init_chat_model
 from managed_deepagents import define_deep_agent
 
 from tools.search import tavily_search
@@ -51,9 +52,11 @@ research_sub_agent = {
     "tools": [tavily_search],
 }
 
+# Zhipu's coding endpoint is OpenAI chat-completions compatible, not the
+# /responses API that openai:* models enable by default.
 agent = define_deep_agent(
     name="deep-research",
-    model="anthropic:claude-sonnet-4-5-20250929",
+    model=init_chat_model("openai:glm-5.3", use_responses_api=False),
     tools=[tavily_search],
     subagents=[research_sub_agent],
     middleware=[TodoListMiddleware()],
