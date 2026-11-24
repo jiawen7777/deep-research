@@ -5,6 +5,7 @@ description = "A Managed Deep Agent project."
 requires-python = ">=3.11"
 dependencies = [
     "httpx>=0.28.1",
+    "langchain-openai>=1.8.5",
     "managed-deepagents==0.10.5",
     "markdownify>=1.2.4",
     "tavily-python>=0.8.5",
