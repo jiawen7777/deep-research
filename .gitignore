@@ -1,6 +1,7 @@
 # Secrets — never commit real API keys.
 .env
 .env.*
+!.env.example
 
 # Managed Deep Agent build output.
 .mda/
@@ -17,3 +18,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local virtualenv.
+.venv/
